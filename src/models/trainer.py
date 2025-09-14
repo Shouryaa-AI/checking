@@ -1,5 +1,4 @@
-best_lstm_params['n_layers'],
-                                      best_lstm_params['bidirectional'], best_lstm_params['dropout'], PAD_IDX).to(device)
+    best_lstm_params['n_layers'],best_lstm_params['bidirectional'], best_lstm_params['dropout'], PAD_IDX).to(device)
     final_lstm_optimizer_with_weights = optim.Adam(final_lstm_model_with_weights.parameters(), lr=best_lstm_params['lr'], weight_decay=best_lstm_params['weight_decay'])
     final_criterion_with_weights = nn.CrossEntropyLoss(weight=class_weights_tensor).to(device) # WITH WEIGHTS HERE
     final_lstm_train_loader_with_weights = DataLoader(train_dataset, batch_size=best_lstm_params['batch_size'], shuffle=True)
@@ -38,3 +37,4 @@ best_lstm_params['n_layers'],
     print(classification_report(test_labels_lstm_with_weights, test_preds_lstm_with_weights, target_names=label_encoder.classes_))
 
     return lstm_report, test_labels_lstm_with_weights, test_preds_lstm_with_weights
+
