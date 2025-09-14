@@ -6,3 +6,17 @@ pandas
 numpy
 matplotlib
 seaborn
+pandas
+numpy
+scikit-learn
+nltk
+emoji
+torch
+torchvision
+torchaudio
+torchtext
+transformers
+gensim
+optuna
+matplotlib
+seaborn
