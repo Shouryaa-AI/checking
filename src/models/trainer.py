@@ -255,3 +255,11 @@ def train_and_evaluate_cnn_with_weights(train_dataset, val_dataset, test_dataset
         final_cnn_model_with_weights.load_state_dict(best_model_state_cnn)
         print("Loaded best CNN model state based on validation loss.")
 
+
+    test_loss_lstm_with_weights, test_acc_lstm_with_weights, test_preds_lstm_with_weights, test_labels_lstm_with_weights = evaluate_model(final_lstm_model_with_weights, final_lstm_test_loader_with_weights, final_criterion_with_weights, device)
+    print(f'\nFinal LSTM Test Loss: {test_loss_lstm_with_weights:.4f} | Final LSTM Test Acc: {test_acc_lstm_with_weights*100:.2f}%')
+    print("\nLSTM Model Performance on Test Set (WITH Class Weighting):")
+    lstm_report = classification_report(test_labels_lstm_with_weights, test_preds_lstm_with_weights, target_names=label_encoder.classes_, output_dict=True)
+    print(classification_report(test_labels_lstm_with_weights, test_preds_lstm_with_weights, target_names=label_encoder.classes_))
+
+    return lstm_report, test_labels_lstm_with_weights, test_preds_lstm_with_weights
